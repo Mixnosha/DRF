@@ -16,7 +16,7 @@ services:
 #      - 5435:5432
   drf_site:
     build: .
-    command: python /usr/src/drf_site/manage.py migrate && python /usr/src/drf_site/manage.py runserver 0.0.0.0:8000
+    command: python /usr/src/drf_site/manage.py runserver 0.0.0.0:8000
 
     volumes:
       - .:/usr/src/drf_site
