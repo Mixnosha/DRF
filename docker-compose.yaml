@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  drf_db:
+    image: postgres:14.4-alpine
+    environment:
+      POSTGRES_PASSWORD: 123123
+      POSTGRES_USER: mixnosha
+      POSTGRES_DB: drf_db
+      PGDATA: /home/mixnosha/postgres/data
+      POSTGRES_INITDB_ARGS: "-A md5"
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data/
+
+#    ports:
+#      - 5435:5432
+  drf_site:
+    build: .
+    command: python /usr/src/drf_site/manage.py migrate && python /usr/src/drf_site/manage.py runserver 0.0.0.0:8000
+
+    volumes:
+      - .:/usr/src/drf_site
+    environment:
+      POSTGRES_PASSWORD: 123123
+      POSTGRES_USER: mixnosha
+      POSTGRES_DB: drf_db
+    ports:
+      - 8000:8000
+    depends_on:
+      - drf_db
+
+#volumes:
+#  postgres_data:
