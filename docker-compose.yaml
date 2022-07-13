@@ -7,10 +7,10 @@ services:
       POSTGRES_PASSWORD: 123123
       POSTGRES_USER: mixnosha
       POSTGRES_DB: drf_db
-      PGDATA: /home/mixnosha/postgres/data
+      #PGDATA: /home/mixnosha/postgres/data
       POSTGRES_INITDB_ARGS: "-A md5"
-#    volumes:
-#      - postgres_data:/var/lib/postgresql/data/
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
 
 #    ports:
 #      - 5435:5432
@@ -29,5 +29,5 @@ services:
     depends_on:
       - drf_db
 
-#volumes:
-#  postgres_data:
+volumes:
+  postgres_data:

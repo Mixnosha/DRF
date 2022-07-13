@@ -12,11 +12,16 @@ class WomenViewSet(viewsets.ModelViewSet): #ReadOnlyModelViewSet
     queryset = Women.objects.all()
     serializer_class = WomenSerializer
 
+    def get_queryset(self):
+        pk = self.kwargs.get('pk')
+        if not pk:
+            return Women.objects.all()[:2]
+        return Women.objects.filter(pk=pk)
 
-    @action(method=['get'], detail=False)
-    def category(self, request):
-        cats = Category.objects.all()
-        return Response({'cats': [c.name for c in cats]})
+    @action(methods=['get'], detail=True)
+    def category(self, request, pk=None):
+        cats = Category.objects.get(pk=pk)
+        return Response({'cats': cats.name})
 
 
 #class WomenAPIView(generics.ListAPIView):

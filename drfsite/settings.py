@@ -75,27 +75,31 @@ WSGI_APPLICATION = 'drfsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'drf_site',
-#         'USER': 'drf_mixnosha',
-#         'PASSWORD': 'Maksim21z',
-#         'HOST': 'localhost',
-#         'PORT': ''
-#     }
-# }
 
+# ---------------------db for pk---------------
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_NAME'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': 'drf_db',
-        'PORT': 5432,
+        'NAME': 'drf_site',
+        'USER': 'drf_mixnosha',
+        'PASSWORD': 'Maksim21z',
+        'HOST': 'localhost',
+        'PORT': ''
     }
 }
+
+
+# ----------------db tools for Docker-----------------
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get('POSTGRES_NAME'),
+#         'USER': os.environ.get('POSTGRES_USER'),
+#         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+#         'HOST': 'drf_db',
+#         'PORT': 5432,
+#     }
+# }
 
 
 # Password validation
